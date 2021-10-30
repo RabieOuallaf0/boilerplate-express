@@ -5,9 +5,8 @@ var absolutePath = __dirname + "/views/index.html";
 var staticPath = __dirname + "/public ";
 
 
-app.get("/", function(req, res, next){ 
+app.get("/", function(req, res){ 
     res.sendFile(absolutePath);
-    next;
 });
 
 app.use('/public', express.static(staticPath));    
@@ -21,6 +20,7 @@ app.get('/json' , function(req, res) {
     console.log(jsonRes)
     res.json(jsonRes);
 });
+
 
 
 
