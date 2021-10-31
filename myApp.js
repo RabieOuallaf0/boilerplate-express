@@ -1,8 +1,8 @@
-require('dotenv').config();
 var express = require('express');
 var app = express();
 var absolutePath = __dirname + "/views/index.html";
 var staticPath = __dirname + "/public ";
+require('dotenv').config();
 
 
 app.get("/", function(req, res){ 
