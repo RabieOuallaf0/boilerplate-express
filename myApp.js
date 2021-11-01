@@ -12,15 +12,13 @@ app.get("/", function(req, res){
 app.use('/public', express.static(staticPath));    
 
 
-if (process.env.MESSAGE_STYLE=='uppercase') {
-    app.get('/json', function(req, res) {
-        return res.json({"message" : "HELLO JSON"})
-    });
-}else {
-    app.get('/json', function(req, res) {
-        return res.json({"message" : "hello json"})
-    });
-};
+app.get("/json", function(req, res){
+    if (process.env.MESSAGE_STYLE === "uppercase") {
+        res.json({"message" : "HELLO JSON"});
+    }else {
+        res.json({"message" : "hello json"});
+    };
+});
 
 
 
