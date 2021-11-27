@@ -1,4 +1,4 @@
-var bodyPraser = require('body-parser');
+var bodyParser = require('body-parser');
 var express = require('express');
 var app = express();
 var absolutePath = __dirname + "/views/index.html";
@@ -45,13 +45,11 @@ app.get("/name", function(req, res) {
     res.json( {name : req.query.first + " " + req.query.last})
 });
 
-
-app.use(function(req ,res , next){
-    bodyParser.urlencoded({extended: false});
-    console.log(bodyPraser);
-    next();
+app.post("/name", function(req, res){
+    res.json({name : req.body.first + " " + req.body.last});
 });
 
+app.use('/bodyparser' ,bodyParser.urlencoded({extended: false}));
 
 
 
