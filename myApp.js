@@ -2,7 +2,10 @@ var bodyParser = require('body-parser');
 var express = require('express');
 var app = express();
 var absolutePath = __dirname + "/views/index.html";
-var staticPath = __dirname + "/public ";
+var staticPath = __dirname + "/public/style.css";
+
+app.use(bodyParser.urlencoded({extended: false}));
+
 
 app.use(function(req, res, next){
     console.log(req.method + " " + req.path + " - " + req.ip);
@@ -46,10 +49,9 @@ app.get("/name", function(req, res) {
 });
 
 app.post("/name", function(req, res){
-    res.json({name : req.body.first + " " + req.body.last});
+    console.log(res.json({name : req.body.first + " " + req.body.last}));
 });
 
-app.use('/bodyparser' ,bodyParser.urlencoded({extended: false}));
 
 
 
